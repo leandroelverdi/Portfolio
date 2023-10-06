@@ -9,11 +9,14 @@ export const Navbar = () => {
 
   return (
     <header
-      className={`flex items-center justify-between px-8 h-20 ${
+      className={`fixed z-10 flex items-center justify-between px-8 w-full  h-20 capitalize ${
         isDarkMode ? "bg-stone-950 text-white" : "bg-gray-100"
       }`}
     >
-      <button onClick={()=> setIsOppen(prev => !prev)} className="p-1 rounded-md block md:hidden">
+      <button
+        onClick={() => setIsOppen((prev) => !prev)}
+        className="p-1 rounded-md block md:hidden"
+      >
         <svg
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
@@ -29,30 +32,35 @@ export const Navbar = () => {
           />
         </svg>
       </button>
-      <div className="font-[Lobster] grow md:grow-0 text-center text-4xl">
-        LE
-      </div>
+      <a className="grow md:grow-0" href="#home">
+        <div className="font-[Lobster] text-center text-4xl">
+          LE
+        </div>
+      </a>
 
       {/* Navbar Desktop */}
       <nav className="hidden md:flex">
         <ul
-          className={`flex justify-center items-center gap-4 h-24 [&>li>a]:rounded [&>li>a]:capitalize [&>li>a]:px-4 [&>li>a]:py-2 ${
+          className={`flex justify-center items-center gap-4 h-24 ${
             isDarkMode
-              ? "[&>li>a]:bg-white [&>li>a:hover]:bg-gray-300 text-black"
-              : "[&>li>a]:bg-cyan-100 [&>li>a:hover]:bg-cyan-200"
+              ? "[&>li>a]:border-b [&>li>a]:border-white [&>li>a]:p-1 [&>li>a:hover]:border-neutral-600"
+              : "[&>li>a]:border-b [&>li>a]:border-black"
           }`}
         >
           <li>
-            <a href="">inico</a>
+            <a href="#home">inico</a>
           </li>
           <li>
-            <a href="">experiencia</a>
+            <a href="#skills">tecnologias</a>
           </li>
           <li>
-            <a href="">sobre mi</a>
+            <a href="#projects">proyectos</a>
           </li>
           <li>
-            <a href="">proyectos</a>
+            <a href="#about-me">sobre mi</a>
+          </li>
+          <li>
+            <a href="#contact-me">contactame</a>
           </li>
         </ul>
       </nav>
@@ -60,12 +68,14 @@ export const Navbar = () => {
       {/* Navbar Mobile */}
       <nav className="flex md:hidden">
         <ul
-          className={`absolute w-full left-0 mt-10 capitalize text-xl p-4 bg-zinc-900 ${isOppen ? "flex-col z-10" : "hidden"}`}
+          className={`absolute w-full left-0 mt-10 text-xl p-4 bg-zinc-900 ${
+            isOppen ? "flex-col z-10" : "hidden"
+          }`}
         >
           <li>
             <a
               className="block p-4 bg-transparent text-white hover:bg-zinc-700 rounded-md"
-              href=""
+              href="#home"
             >
               inico
             </a>
@@ -73,15 +83,23 @@ export const Navbar = () => {
           <li>
             <a
               className="block p-4 bg-transparent text-white hover:bg-zinc-700 rounded-md"
-              href=""
+              href="#skills"
             >
-              experiencia
+              tecnologias
             </a>
           </li>
           <li>
             <a
               className="block p-4 bg-transparent text-white hover:bg-zinc-700 rounded-md"
-              href=""
+              href="#projects"
+            >
+              proyectos
+            </a>
+          </li>
+          <li>
+            <a
+              className="block p-4 bg-transparent text-white hover:bg-zinc-700 rounded-md"
+              href="#about-me"
             >
               sobre mi
             </a>
@@ -89,9 +107,9 @@ export const Navbar = () => {
           <li>
             <a
               className="block p-4 bg-transparent text-white hover:bg-zinc-700 rounded-md"
-              href=""
+              href="#contact-me"
             >
-              proyectos
+              contactame
             </a>
           </li>
         </ul>
@@ -106,15 +124,6 @@ export const Navbar = () => {
           <img className="w-7 h-7" src={moon} alt="Moon" />
         )}
       </button>
-      {/* <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <button
-          data-collapse-toggle="navbar-default"
-          type="button"
-          class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-          aria-controls="navbar-default"
-          aria-expanded="false"
-        ></button>
-      </div> */}
     </header>
   );
 };
